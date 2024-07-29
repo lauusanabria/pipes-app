@@ -1,0 +1,49 @@
+<p-panel header="Number Pipes" class="p-1">
+  <p>Numeric pipes - included with common module (using es-Co locale)</p>
+  <input
+    #numinput
+    type="number"
+    pInputText
+    variant="filled"
+    class="w-full"
+    placeholder="Enter your text here"
+  />
+</p-panel>
+<div class="grid mt-2">
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="no format">
+      {{ numinput.value || defaultNumber }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="decimal">
+      {{ numinput.value || defaultNumber | number }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="two decimal places">
+      {{ numinput.value || defaultNumber | number : "1.2-2" }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="default currency">
+      {{ numinput.value || defaultNumber | currency }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="Japanese currency">
+      {{
+        numinput.value || defaultNumber
+          | currency : "JPY" : "symbol-narrow" : "1.4-4"
+      }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="percentage (over 1M)">
+      {{
+        (parseValueToInt(numinput.value) || defaultNumber) / 1_000_000
+          | percent : "1.2-2"
+      }}
+    </p-card>
+  </div>
+</div>

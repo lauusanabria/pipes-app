@@ -1,0 +1,96 @@
+<p-panel header="Basic Pipes" class="p-1">
+  <p>Text pipes - included with common module</p>
+  <input
+    #txtinput
+    type="text"
+    pInputText
+    variant="filled"
+    class="w-full"
+    placeholder="Enter your text here"
+  />
+</p-panel>
+<div class="grid mt-2">
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="uppercase">
+      {{ txtinput.value || "uppercase text" | uppercase }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="lowercase">
+      {{ txtinput.value || "lowercase text" | lowercase }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="titlecase">
+      {{ txtinput.value || "titlecase text" | titlecase }}
+    </p-card>
+  </div>
+</div>
+
+<p-panel header="Date Pipes" class="p-1">
+  <p>Date pipes - included with common module (using es-CO as global locale)</p>
+  <!--input
+    #dateinput
+    type="date"
+    pInputText
+    variant="filled"
+    class="w-full"
+    placeholder="Enter your date here"
+  /-->
+  <p-calendar
+    #dateinput
+    inputId="calendar-24h"
+    variant="filled"
+    placeholder="Enter your date here"
+    [showTime]="true"
+    [hourFormat]="'24'"
+    [styleClass]="'w-full'"
+  />
+</p-panel>
+<div class="grid mt-2">
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="no format">
+      {{ dateinput.value || defaultDate }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="date">
+      {{ dateinput.value || defaultDate | date }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="short date">
+      {{ dateinput.value || defaultDate | date : "short" }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="long date">
+      {{ dateinput.value || defaultDate | date : "long" }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="wide month">
+      {{ dateinput.value || defaultDate | date : "MMMM" }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="MMMM, dd, yyyy">
+      {{ dateinput.value || defaultDate | date : "MMMM, dd, yyyy" }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="Japan time zone">
+      {{ dateinput.value || defaultDate | date : "long" : "GMT+9" }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="Portugal time zone">
+      {{ dateinput.value || defaultDate | date : "long" : "GMT+1" }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="US english locale">
+      {{ dateinput.value || defaultDate | date : "long" : "" : "en-US" }}
+    </p-card>
+  </div>
+</div>

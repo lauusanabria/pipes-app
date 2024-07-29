@@ -1,0 +1,74 @@
+<p-panel header="Uncommon Pipes" class="p-1">
+  <p>Numeric pipes - included with common module (using es-Co locale)</p>
+</p-panel>
+
+<div class="grid">
+  <div class="col12 md:col-6 lg:col-3">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        Hey,
+        {{ peopleList[currentPersonIndex].gender | i18nSelect : titleMap }}
+        {{ peopleList[currentPersonIndex].name }}.
+        {{
+          peopleList[currentPersonIndex].gender
+            | i18nSelect : spanishWelcomeMap
+        }}!
+      </p>
+      <p-button label="Switch person" (click)="switchPerson()"></p-button>
+    </p-fieldset>
+  </div>
+  <div class="col12 md:col-6 lg:col-3">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <p>
+        Currently, there
+        {{ clientList.length | i18nPlural : clientsMap }} in the queue.
+      </p>
+      <p-button
+        *ngIf="clientList.length > 0; else resetButton"
+        label="Remove client"
+        (click)="removeClient()"
+      ></p-button>
+      <ng-template #resetButton>
+        <p-button
+          label="Reset client list"
+          (click)="resetClientList()"
+        ></p-button>
+      </ng-template>
+    </p-fieldset>
+  </div>
+  <div class="col12 md:col-6 lg:col-3">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+      <b>Original </b>
+      <pre class="ellipsis-txt"> {{ getNames() }}</pre>
+      <b>Slice:0:2 </b>
+      <pre class="ellipsis-txt"> {{ getNames() | slice : 0 : 2 }}</pre>
+      <b>Slice:0:-1 </b>
+      <pre class="ellipsis-txt"> {{ getNames() | slice : 0 : -1 }}</pre>
+    </p-fieldset>
+  </div>
+  <div class="col12 md:col-6 lg:col-3">
+    <p-fieldset legend="Json Pipe" [toggleable]="true">
+      <b>Original</b>
+      <pre class="ellipsis-txt">{{ peopleList }}</pre>
+      <b>json</b>
+      <pre>{{ peopleList | json }}</pre>
+    </p-fieldset>
+  </div>
+  <div class="col12 md:col-6 lg:col-3">
+    <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+      <ul>
+        <li *ngFor="let prop of peopleList[0] | keyvalue">
+          <b>{{ prop.key | titlecase }}:</b> {{ prop.value }}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+  <div class="col12 md:col-6 lg:col-3">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <pre *ngIf="!(timer | async)">Resolving observable</pre>
+      <pre>{{ timer | async }}</pre>
+      <pre *ngIf="!(timeOutPromise | async)">Resolving promise</pre>
+      <pre>{{ timeOutPromise | async }}</pre>
+    </p-fieldset>
+  </div>
+</div>
