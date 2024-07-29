@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BasicsPageComponent } from './pages/basics-page/basics-page.component';
+import { CustomPageComponent } from './pages/custom-page/custom-page.component';
 import { NumbersPageComponent } from './pages/numbers-page/numbers-page.component';
 import { UncommonPageComponent } from './pages/uncommon-page/uncommon-page.component';
 
@@ -19,6 +20,10 @@ const routes: Routes = [
     component: UncommonPageComponent,
   },
   {
+    path: 'custom',
+    component: CustomPageComponent,
+  },
+  {
     path: '**',
     redirectTo: '',
   },
@@ -28,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PipesRoutingModule {}
+export class ExamplesRoutingModule {}
