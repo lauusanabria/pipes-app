@@ -54,8 +54,9 @@ export class UncommonPageComponent {
   }
 
   // slice pipe
+  public clientNames = this.clientList.map((client) => client.name);
   public getNames(): string[] {
-    return [...this.clientList.map((client) => client.name), 'Sam', 'Drew'];
+    return [...this.clientNames, 'Sam', 'Drew'];
   }
 
   // Async pipe
@@ -66,7 +67,7 @@ export class UncommonPageComponent {
   public timeOutPromise: Promise<string> = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('Promise resolved');
-      console.log("promise resolved")
+      console.log('promise resolved');
     }, 3500);
   });
 }
