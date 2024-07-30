@@ -9,12 +9,27 @@ import { CustomPageComponent } from './pages/custom-page/custom-page.component';
 import { NumbersPageComponent } from './pages/numbers-page/numbers-page.component';
 import { UncommonPageComponent } from './pages/uncommon-page/uncommon-page.component';
 
+import { AvailabilityPipe } from './pipes/availability.pipe';
+import { ColorNamePipe } from './pipes/color-name.pipe';
+import { LowerUpperCasePipe } from './pipes/lower-upper-case.pipe';
+import { SizeNamePipe } from './pipes/size-name.pipe';
+import { SortByPipe } from './pipes/sort-by.pipe';
+import { ToggleCasePipe } from './pipes/toggle-case.pipe';
+
 @NgModule({
   declarations: [
+    // components
     BasicsPageComponent,
     CustomPageComponent,
     NumbersPageComponent,
     UncommonPageComponent,
+    // pipes
+    AvailabilityPipe,
+    ColorNamePipe,
+    LowerUpperCasePipe,
+    SizeNamePipe,
+    SortByPipe,
+    ToggleCasePipe,
   ],
   imports: [CommonModule, ExamplesRoutingModule, PrimeNgModule],
 })

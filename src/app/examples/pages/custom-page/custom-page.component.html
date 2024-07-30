@@ -1,3 +1,89 @@
 <p-panel header="Custom Pipes" class="p-1">
   <p>Custom pipes - Created by Laura.</p>
 </p-panel>
+<div class="grid">
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="toggle case">
+      <p><b>Original: </b> {{ txt }}</p>
+      <p>
+        <b>Toggled: </b>
+        {{ txt | toggleCase }}
+      </p>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <p-card header="upper/lower switch">
+      <p><b>Original: </b> {{ txt }}</p>
+      <p>
+        <b>{{ toUpperCase ? "Upper" : "Lower" }}: </b>
+        {{ txt | lowerUpperCase : toUpperCase }}
+      </p>
+      <p-button
+        label="switch case"
+        icon="pi pi-arrow-right-arrow-left"
+        (click)="toUpperCase = !toUpperCase"
+      ></p-button>
+    </p-card>
+  </div>
+</div>
+
+<p-toolbar>
+  <div class="p-toolbar-group-start"></div>
+  <div class="p-toolbar-group-end">
+    <p-button
+      class="mr-2"
+      label="by name"
+      icon="pi pi-sort"
+      styleClass="p-button-success"
+      (click)="changeOrder('name')"
+    ></p-button>
+    <p-button
+      class="mr-2"
+      label="by color"
+      icon="pi pi-sort"
+      styleClass="p-button-danger"
+      (click)="changeOrder('color')"
+    ></p-button>
+    <p-button
+      class="mr-2"
+      label="by size"
+      icon="pi pi-sort"
+      styleClass="p-button-help"
+      (click)="changeOrder('size')"
+    ></p-button>
+    <p-button
+      class="mr-2"
+      label="by availability"
+      icon="pi pi-sort"
+      (click)="changeOrder('available')"
+    ></p-button>
+  </div>
+</p-toolbar>
+
+<div class="grid">
+  <div class="col mt-2">
+    <p-panel header="Items">
+      <p-table
+        [value]="items | sortBy : sortBy: sortDirection"
+        [tableStyle]="{ 'min-width': '50rem' }"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Available</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.color | colorName | titlecase }}</td>
+            <td>{{ item.size | sizeName | titlecase }}</td>
+            <td>{{ item.available | availability | titlecase }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-panel>
+  </div>
+</div>
