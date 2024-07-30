@@ -61,6 +61,25 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "github": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "500kB",
+                  "maximumError": "2MB"
+                }
+              ],
+              "outputHashing": "all",
+              "outputPath": {
+                "base": "./docs",
+                "browser": ""
+              }
             }
           },
           "defaultConfiguration": "production"
